@@ -44,11 +44,13 @@
     <link href="http://yoursite.com/2018/11/13/REAL-First-post/"/>
     <id>http://yoursite.com/2018/11/13/REAL-First-post/</id>
     <published>2018-11-13T11:59:38.000Z</published>
-    <updated>2018-11-13T12:02:20.989Z</updated>
+    <updated>2018-11-13T12:33:07.119Z</updated>
     
     <summary type="html">
     
     </summary>
+    
+      <category term="hexo" scheme="http://yoursite.com/categories/hexo/"/>
     
     
       <category term="BORING" scheme="http://yoursite.com/tags/BORING/"/>
