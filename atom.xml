@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-11-13T11:57:56.434Z</updated>
+  <updated>2018-11-13T12:02:20.989Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,22 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>REAL First post</title>
+    <link href="http://yoursite.com/2018/11/13/REAL-First-post/"/>
+    <id>http://yoursite.com/2018/11/13/REAL-First-post/</id>
+    <published>2018-11-13T11:59:38.000Z</published>
+    <updated>2018-11-13T12:02:20.989Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+      <category term="BORING" scheme="http://yoursite.com/tags/BORING/"/>
+    
+  </entry>
   
   <entry>
     <title></title>
