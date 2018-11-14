@@ -44,30 +44,6 @@
   
   <entry>
     <title>HEXO部署到GitHub.io搭建个人博客</title>
-    <link href="http://yoursite.com/2018/11/13/Bye-world/"/>
-    <id>http://yoursite.com/2018/11/13/Bye-world/</id>
-    <published>2018-11-13T12:07:42.000Z</published>
-    <updated>2018-11-14T17:12:14.849Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="install-git"><a href="#install-git" class="headerlink" title="install git"></a><a href="https://github.com/funcab/notes/blob/master/git/usage.md" target="_blank" rel="noopener">install git</a></h2><h2 id="install-Node-js"><a href="#install-Node-js" class="headerlink" title="install Node.js"></a>install Node.js</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl https://raw.github.com/creationix/nvm/v0.33.11/install.sh | sh</span><br></pre></td></tr></table></figure><p>Close and reopen your terminal to start using nvm or run the following to use it now:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export NVM_DIR=&quot;$HOME/.nvm&quot;</span><br><span class="line">[ -s &quot;$NVM_DIR/nvm.sh&quot; ] &amp;&amp; \. &quot;$NVM_DIR/nvm.sh&quot;  # This loads nvm</span><br></pre></td></tr></table></figure></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm install stable</span><br></pre></td></tr></table></figure><a id="more"></a> <h2 id="install-Hexo-and-init"><a href="#install-Hexo-and-init" class="headerlink" title="install Hexo and init"></a>install Hexo and init</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br><span class="line">mkdir &lt;folder&gt;</span><br><span class="line">hexo init &lt;folder&gt;</span><br><span class="line">cd &lt;folder&gt;</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure><h2 id="install-NexT"><a href="#install-NexT" class="headerlink" title="install NexT"></a>install NexT</h2><p>Download latest release version:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir themes/next</span><br><span class="line">curl -s https://api.github.com/repos/iissnan/hexo-theme-next/releases/latest | grep tarball_url </span><br><span class="line">| cut -d &apos;&quot;&apos; -f 4 | wget -i - -O- | tar -zx -C themes/next --strip-components=1</span><br></pre></td></tr></table></figure></p><p>Set theme in main hexo root config _config.yml file:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theme: next</span><br></pre></td></tr></table></figure></p><h2 id="github-pages"><a href="#github-pages" class="headerlink" title="github pages"></a>github pages</h2><p>install plugins:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></p><p>edit <folder>/_config.yml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://[github用户名]:[github密码]@github.com/xxx/xxx.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure></folder></p><p>push to github：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g &amp;&amp; hexo deploy</span><br></pre></td></tr></table></figure></p><p>publish new blog:<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new &apos;blogname&apos;</span><br></pre></td></tr></table></figure></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;install-git&quot;&gt;&lt;a href=&quot;#install-git&quot; class=&quot;headerlink&quot; title=&quot;install git&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://github.com/funcab/notes/blob/master/git/usage.md&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;install git&lt;/a&gt;&lt;/h2&gt;&lt;h2 id=&quot;install-Node-js&quot;&gt;&lt;a href=&quot;#install-Node-js&quot; class=&quot;headerlink&quot; title=&quot;install Node.js&quot;&gt;&lt;/a&gt;install Node.js&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;curl https://raw.github.com/creationix/nvm/v0.33.11/install.sh | sh&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;Close and reopen your terminal to start using nvm or run the following to use it now:&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;export NVM_DIR=&amp;quot;$HOME/.nvm&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[ -s &amp;quot;$NVM_DIR/nvm.sh&amp;quot; ] &amp;amp;&amp;amp; \. &amp;quot;$NVM_DIR/nvm.sh&amp;quot;  # This loads nvm&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;nvm install stable&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-    
-      <category term="HEXO" scheme="http://yoursite.com/tags/HEXO/"/>
-    
-      <category term="搭建个人博客" scheme="http://yoursite.com/tags/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>HEXO部署到GitHub.io搭建个人博客</title>
     <link href="http://yoursite.com/2018/11/13/HEXO%E9%83%A8%E7%BD%B2/"/>
     <id>http://yoursite.com/2018/11/13/HEXO部署/</id>
     <published>2018-11-13T12:07:42.000Z</published>
@@ -87,24 +63,6 @@
       <category term="HEXO" scheme="http://yoursite.com/tags/HEXO/"/>
     
       <category term="搭建个人博客" scheme="http://yoursite.com/tags/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>REAL First post</title>
-    <link href="http://yoursite.com/2018/11/13/REAL-First-post/"/>
-    <id>http://yoursite.com/2018/11/13/REAL-First-post/</id>
-    <published>2018-11-13T11:59:38.000Z</published>
-    <updated>2018-11-13T12:33:07.119Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="hexo" scheme="http://yoursite.com/categories/hexo/"/>
-    
-    
-      <category term="BORING" scheme="http://yoursite.com/tags/BORING/"/>
     
   </entry>
   
