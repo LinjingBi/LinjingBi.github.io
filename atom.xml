@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-11-20T12:12:24.324Z</updated>
+  <updated>2018-11-20T14:58:08.124Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,70 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>leetcode-58</title>
+    <link href="http://yoursite.com/2018/11/20/leetcode-58/"/>
+    <id>http://yoursite.com/2018/11/20/leetcode-58/</id>
+    <published>2018-11-20T14:41:41.000Z</published>
+    <updated>2018-11-20T14:58:08.124Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="题目：leetcode-58-最后一个单词的长度"><a href="#题目：leetcode-58-最后一个单词的长度" class="headerlink" title="题目：leetcode 58 最后一个单词的长度"></a>题目：leetcode 58 最后一个单词的长度</h3><pre><code>给定一个仅包含大小写字母和空格&apos; &apos;的字符串，返回其最后一个单词的长度。如果不存在返回0例子：输入：&apos;Hello World’输出：5</code></pre><p>这个例子用python的str.split()很简单，只是想强调一下，当str为空或者全是’ ‘时，得到的列表也为空，此时不能用[-1]找最后一个元素。还有，如果a不为空或者全’ ‘，而是一个单一字符组成的字符串，a.split(‘该单一字符’)得到的列表为[‘’ for i in range(len(a)+1)]，而不是一个空列表。<br><a id="more"></a><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#python3</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">lengthOfLastWord</span><span class="params">(self, s)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type s: str</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        b = s.split()</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span> <span class="keyword">if</span> len(b) == <span class="number">0</span> <span class="keyword">else</span> len(b[<span class="number">-1</span>])</span><br></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;题目：leetcode-58-最后一个单词的长度&quot;&gt;&lt;a href=&quot;#题目：leetcode-58-最后一个单词的长度&quot; class=&quot;headerlink&quot; title=&quot;题目：leetcode 58 最后一个单词的长度&quot;&gt;&lt;/a&gt;题目：leetcode 58 最后一个单词的长度&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;给定一个仅包含大小写字母和空格&amp;apos; &amp;apos;的字符串，返回其最后一个单词的长度。如果不存在返回0
+例子：
+输入：&amp;apos;Hello World’
+输出：5
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这个例子用python的str.split()很简单，只是想强调一下，当str为空或者全是’ ‘时，得到的列表也为空，此时不能用[-1]找最后一个元素。还有，如果a不为空或者全’ ‘，而是一个单一字符组成的字符串，a.split(‘该单一字符’)得到的列表为[‘’ for i in range(len(a)+1)]，而不是一个空列表。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="leetcode" scheme="http://yoursite.com/categories/leetcode/"/>
+    
+    
+      <category term="leetcode" scheme="http://yoursite.com/tags/leetcode/"/>
+    
+      <category term="easy" scheme="http://yoursite.com/tags/easy/"/>
+    
+      <category term="字符串" scheme="http://yoursite.com/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>leetcode 6 ZigZag变换</title>
+    <link href="http://yoursite.com/2018/11/20/leetcode-6/"/>
+    <id>http://yoursite.com/2018/11/20/leetcode-6/</id>
+    <published>2018-11-20T13:52:08.000Z</published>
+    <updated>2018-11-20T14:09:34.655Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h3><pre><code>将字符串’PAYPALISHIRING&apos;以Z字型排列成给定的行数，然后逐行读取字符：例子：行数为3P  A   H   NA P L S I I GY    I   R输出：&apos;PAHNAPLSIIGYIR&apos;</code></pre><p>例如第二行的，P L，他们是字符串的第3，5，此时row是2x3-2=4，那么可以看出 3 % 4 = 3， 5 % 4 = 1，3 + 1 = 4 = 2 <em> numrows -2 。他们都属于a[1],所以可以用2</em>numRows - 2 - row，来求出3的行数。<br><a id="more"></a> </p><pre><code class="python"><span class="comment">#python3</span><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span>    <span class="function"><span class="keyword">def</span> <span class="title">convert</span><span class="params">(self, s, numRows)</span>:</span>        <span class="string">"""</span><span class="string">        :type s: str</span><span class="string">        :type numRows: int</span><span class="string">        :rtype: str</span><span class="string">        """</span>        <span class="keyword">if</span> numRows == <span class="number">1</span>:            <span class="keyword">return</span> s        a = [<span class="string">''</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(numRows)] <span class="comment">#建立一个numrows的数组，用来存放每一行</span>        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(s)):            row = i % (<span class="number">2</span>*numRows - <span class="number">2</span>)            <span class="keyword">if</span> row &gt;= numRows:                row = <span class="number">2</span>*numRows - <span class="number">2</span> - row <span class="comment">#！！！</span>            a[row] += s[i]        <span class="keyword">return</span> <span class="string">''</span>.join(a) <span class="comment">#a=[PAHN,APLSIIG,YIR]</span></code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;题目：&quot;&gt;&lt;a href=&quot;#题目：&quot; class=&quot;headerlink&quot; title=&quot;题目：&quot;&gt;&lt;/a&gt;题目：&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;将字符串’PAYPALISHIRING&amp;apos;以Z字型排列成给定的行数，然后逐行读取字符：
+例子：
+行数为3
+P  A   H   N
+A P L S I I G
+Y    I   R
+输出：
+&amp;apos;PAHNAPLSIIGYIR&amp;apos;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;例如第二行的，P L，他们是字符串的第3，5，此时row是2x3-2=4，那么可以看出 3 % 4 = 3， 5 % 4 = 1，3 + 1 = 4 = 2 &lt;em&gt; numrows -2 。他们都属于a[1],所以可以用2&lt;/em&gt;numRows - 2 - row，来求出3的行数。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="leetcode" scheme="http://yoursite.com/categories/leetcode/"/>
+    
+    
+      <category term="leetcode" scheme="http://yoursite.com/tags/leetcode/"/>
+    
+      <category term="字符串" scheme="http://yoursite.com/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+    
+      <category term="medium" scheme="http://yoursite.com/tags/medium/"/>
+    
+  </entry>
   
   <entry>
     <title>python @装饰器</title>
