@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="python,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="LINJING BI" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="##几个概念装饰器的用处是不需要大批量修改某函数就能实现为其增添功能。装饰器满足两点要求：    不能修改被装饰函数的源代码   不能修改被装饰函数的调用方式    在讲解装饰器之前，我们还需要明白几个表达方式。对一个函数test1()来说：    test1表示的是函数的内存地址   test1()就是在调用在test1这个地址的内容，也就是在调用函数    现在正式开始介绍装饰器的用法。 ##">
+<meta name="keywords" content="python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python @装饰器">
+<meta property="og:url" content="http://yoursite.com/2018/11/20/python-decorator/index.html">
+<meta property="og:site_name" content="LINJING BI">
+<meta property="og:description" content="##几个概念装饰器的用处是不需要大批量修改某函数就能实现为其增添功能。装饰器满足两点要求：    不能修改被装饰函数的源代码   不能修改被装饰函数的调用方式    在讲解装饰器之前，我们还需要明白几个表达方式。对一个函数test1()来说：    test1表示的是函数的内存地址   test1()就是在调用在test1这个地址的内容，也就是在调用函数    现在正式开始介绍装饰器的用法。 ##">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-11-20T10:49:17.812Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python @装饰器">
+<meta name="twitter:description" content="##几个概念装饰器的用处是不需要大批量修改某函数就能实现为其增添功能。装饰器满足两点要求：    不能修改被装饰函数的源代码   不能修改被装饰函数的调用方式    在讲解装饰器之前，我们还需要明白几个表达方式。对一个函数test1()来说：    test1表示的是函数的内存地址   test1()就是在调用在test1这个地址的内容，也就是在调用函数    现在正式开始介绍装饰器的用法。 ##">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/11/20/python-decorator/">
+
+
+
+
+
+  <title>python @装饰器 | LINJING BI</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">LINJING BI</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">biubiubiu...</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/20/python-decorator/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LINJING BI">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">python @装饰器</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-20T17:08:11+08:00">
+                2018-11-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>##几个概念<br>装饰器的用处是不需要大批量修改某函数就能实现为其增添功能。装饰器满足两点要求：  </p>
+<ol>
+<li>不能修改被装饰函数的源代码  </li>
+<li>不能修改被装饰函数的调用方式  </li>
+</ol>
+<p>在讲解装饰器之前，我们还需要明白几个表达方式。对一个函数test1()来说：  </p>
+<ol>
+<li>test1表示的是函数的内存地址  </li>
+<li>test1()就是在调用在test1这个地址的内容，也就是在调用函数  </li>
+</ol>
+<p>现在正式开始介绍装饰器的用法。</p>
+<p>##不带参数装饰器<br>这里我们先假设我们有一个函数test，我们想在不改变函数代码和调用方式的前提下，实现对test的运行时间计算。<br>不使用装饰器的代码如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#python3</span></span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">timer</span><span class="params">(func)</span>:</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">running_time</span><span class="params">()</span>:</span></span><br><span class="line">            print(<span class="string">'%s loaded'</span>%func)</span><br><span class="line">            start = time.time()</span><br><span class="line">            res = func()<span class="comment">#4</span></span><br><span class="line">            end = time.time()</span><br><span class="line">            print(<span class="string">'func running time is %s'</span>%(-start+end))</span><br><span class="line">            <span class="keyword">return</span> res <span class="comment">#6</span></span><br><span class="line">        <span class="keyword">return</span> running_time  <span class="comment">#2</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span>:</span><span class="comment">#5</span></span><br><span class="line">    time.sleep(<span class="number">2</span>)</span><br><span class="line">    print(<span class="string">'test is running'</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'test finished'</span></span><br><span class="line"><span class="comment">#调用方式</span></span><br><span class="line">test = timer(test)<span class="comment">#1</span></span><br><span class="line">test()<span class="comment">#3</span></span><br></pre></td></tr></table></figure></p>
+<p>上面的代码在最后两行调用的时候，我们先是把test作为内存地址传入timer，然后timer会执行#1，返回它的内嵌函数running_time的内存地址（注意不是调用），也就是说现在的test存的不再是test函数的内存地址，<br>而是running_time的内存地址，所以我们在#3调用test（）时，其实执行的是running_time，然后在running_time内部再调用test（），计算它的运行时间，大致的流程可以参考注释中的顺序。<br>它的输出如下：</p>
+<pre><code>&lt;function test at 0x00C21A08&gt; loaded
+test is running
+func running time is 2.000366687774658
+test finished
+</code></pre><p>下面我们用@装饰器的语法来简化上述过程。只需要在被调用函数的前面加上@装饰器就可以了。最后函数的调用语句并没有改变（仍为test（）），这也完成了某种程度上对该函数的改写。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#python3</span></span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">timer</span><span class="params">(func)</span>:</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">running_time</span><span class="params">(*args, **kwargs)</span>:</span> <span class="comment">#1</span></span><br><span class="line">            print(<span class="string">'%s loaded'</span>%func)</span><br><span class="line">            start = time.time()</span><br><span class="line">            res = func(*args, **kwargs) <span class="comment">#2</span></span><br><span class="line">            end = time.time()</span><br><span class="line">            print(<span class="string">'func running time is %s'</span>%(-start+end))</span><br><span class="line">            <span class="keyword">return</span> res</span><br><span class="line">        <span class="keyword">return</span> running_time</span><br><span class="line"></span><br><span class="line"><span class="meta">@timer</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">(parameters=None)</span>:</span></span><br><span class="line">    time.sleep(<span class="number">2</span>)</span><br><span class="line">    print(<span class="string">'test is running'</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'test finished'</span></span><br><span class="line"> </span><br><span class="line">test()</span><br></pre></td></tr></table></figure></p>
+<p>值得注意的是，被装饰的函数有时可能也有入参，那么我们可以在装饰器的内嵌函数的入参位置加上args和kwargs确保我们接受了全部的参数（见#1，#2），然后再传递给内嵌函数内对被装饰函数的调用处。<br>这段代码的输出和上一段一样。</p>
+<p>##带参数装饰器<br>当我们有多个被装饰的函数时，我们可能需要在装饰器中将他们区分开来进行处理，这就需要@装饰器（parameter=value)。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#python3</span></span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">timer</span><span class="params">(parameter)</span>:</span> <span class="comment">#3</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inside_timer</span><span class="params">(func)</span>:</span> <span class="comment">#5</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">running_time</span><span class="params">()</span>:</span> <span class="comment">#7</span></span><br><span class="line">            print(<span class="string">'%s loaded'</span>%parameter)</span><br><span class="line">            start = time.time()</span><br><span class="line">            res = func() <span class="comment">#8</span></span><br><span class="line">            end = time.time()</span><br><span class="line">            print(<span class="string">'func running time is %s'</span>%(-start+end))</span><br><span class="line">            <span class="keyword">return</span> res  <span class="comment">#11</span></span><br><span class="line">        <span class="keyword">return</span> running_time <span class="comment">#6</span></span><br><span class="line">    <span class="keyword">return</span> inside_timer   <span class="comment">#4</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@timer(parameter='task1') #2</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span>:</span> <span class="comment">#8</span></span><br><span class="line">    time.sleep(<span class="number">2</span>)</span><br><span class="line">    print(<span class="string">'test is running'</span>) <span class="comment">#9 </span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'test finished'</span> <span class="comment">#10</span></span><br><span class="line">test() <span class="comment">#1</span></span><br></pre></td></tr></table></figure></p>
+<p>输出是  </p>
+<pre><code>task1 loaded  
+test is running  
+func running time is 2.000399112701416  
+test finished  
+</code></pre><p>如果我们不用装饰器这个语法，那么最后的调用过程为：</p>
+<pre><code>timer=timer(parameter=value) #执行完毕后，timer存储的是inside_timer的内存地址
+test=timer(test)   #将test作为入参传入inside_timer，返回running_time的内存地址给test
+test()    #这一步的执行过程和无参数的装饰器都一样
+</code></pre><p>###参考来源<br>如果看完还有疑惑可以参考：<a href="http://lib.csdn.net/article/python/62942" target="_blank" rel="noopener">http://lib.csdn.net/article/python/62942</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Bi 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Bi 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/16/Dijkstra/" rel="next" title="Dijkstra 找最短路径">
+                <i class="fa fa-chevron-left"></i> Dijkstra 找最短路径
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Bi</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/LinjingBi" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:1260935104@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://106.14.174.96:8000/rango/" title="PIPIJI's COOP" target="_blank">PIPIJI's COOP</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bi</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
