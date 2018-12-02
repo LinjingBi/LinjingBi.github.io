@@ -40,9 +40,9 @@
     
       <category term="leetcode" scheme="http://yoursite.com/tags/leetcode/"/>
     
-      <category term="easy" scheme="http://yoursite.com/tags/easy/"/>
-    
       <category term="字符串" scheme="http://yoursite.com/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+    
+      <category term="easy" scheme="http://yoursite.com/tags/easy/"/>
     
   </entry>
   
@@ -74,9 +74,9 @@ Y    I   R
     
       <category term="leetcode" scheme="http://yoursite.com/tags/leetcode/"/>
     
-      <category term="字符串" scheme="http://yoursite.com/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
-    
       <category term="medium" scheme="http://yoursite.com/tags/medium/"/>
+    
+      <category term="字符串" scheme="http://yoursite.com/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
     
   </entry>
   
