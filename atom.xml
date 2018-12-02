@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-12-02T03:16:42.227Z</updated>
+  <updated>2018-12-02T03:26:48.831Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://yoursite.com/2018/12/02/socket-start-notebook/"/>
     <id>http://yoursite.com/2018/12/02/socket-start-notebook/</id>
     <published>2018-12-02T02:39:30.000Z</published>
-    <updated>2018-12-02T03:16:42.227Z</updated>
+    <updated>2018-12-02T03:26:48.831Z</updated>
     
-    <content type="html"><![CDATA[<p>#Socket</p><p>##一、概述<br>socket通常也称作套接字，用于描述IP地址和端口，用于连接应用层与传输层。  </p><p>socket网络编程流程见下图：<br><img src="/hexo-bi/bi/post_images/socket.PNG" alt="avatar"></p>]]></content>
+    <content type="html"><![CDATA[<p>#Socket</p><p>##一、概述<br>socket通常也称作套接字，用于描述IP地址和端口，用于连接应用层与传输层。  </p><p>socket网络编程流程见下图：<br><img src="/hexo-bi/bi/public/images/favicon-16x16-next.png" alt="ava"></p>]]></content>
     
     <summary type="html">
     
@@ -31,7 +31,7 @@
       
         &lt;p&gt;#Socket&lt;/p&gt;
 &lt;p&gt;##一、概述&lt;br&gt;socket通常也称作套接字，用于描述IP地址和端口，用于连接应用层与传输层。  &lt;/p&gt;
-&lt;p&gt;socket网络编程流程见下图：&lt;br&gt;&lt;img src=&quot;/hexo-bi/bi/post_images/socket.PN
+&lt;p&gt;socket网络编程流程见下图：&lt;br&gt;&lt;img src=&quot;/hexo-bi/bi/public/images/favicon
       
     
     </summary>
