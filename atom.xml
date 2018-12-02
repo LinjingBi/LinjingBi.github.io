@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-11-20T15:00:53.673Z</updated>
+  <updated>2018-12-02T03:16:42.227Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>socket网络编程-Notebook</title>
+    <link href="http://yoursite.com/2018/12/02/socket-start-notebook/"/>
+    <id>http://yoursite.com/2018/12/02/socket-start-notebook/</id>
+    <published>2018-12-02T02:39:30.000Z</published>
+    <updated>2018-12-02T03:16:42.227Z</updated>
+    
+    <content type="html"><![CDATA[<p>#Socket</p><p>##一、概述<br>socket通常也称作套接字，用于描述IP地址和端口，用于连接应用层与传输层。  </p><p>socket网络编程流程见下图：<br><img src="/hexo-bi/bi/post_images/socket.PNG" alt="avatar"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;#Socket&lt;/p&gt;
+&lt;p&gt;##一、概述&lt;br&gt;socket通常也称作套接字，用于描述IP地址和端口，用于连接应用层与传输层。  &lt;/p&gt;
+&lt;p&gt;socket网络编程流程见下图：&lt;br&gt;&lt;img src=&quot;/hexo-bi/bi/post_images/socket.PN
+      
+    
+    </summary>
+    
+      <category term="socket网络编程" scheme="http://yoursite.com/categories/socket%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"/>
+    
+    
+      <category term="socket" scheme="http://yoursite.com/tags/socket/"/>
+    
+      <category term="网络编程" scheme="http://yoursite.com/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>leetcode 58 最后一个单词的长度</title>
@@ -40,9 +69,9 @@
     
       <category term="leetcode" scheme="http://yoursite.com/tags/leetcode/"/>
     
-      <category term="字符串" scheme="http://yoursite.com/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
-    
       <category term="easy" scheme="http://yoursite.com/tags/easy/"/>
+    
+      <category term="字符串" scheme="http://yoursite.com/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
     
   </entry>
   
@@ -74,9 +103,9 @@ Y    I   R
     
       <category term="leetcode" scheme="http://yoursite.com/tags/leetcode/"/>
     
-      <category term="medium" scheme="http://yoursite.com/tags/medium/"/>
-    
       <category term="字符串" scheme="http://yoursite.com/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+    
+      <category term="medium" scheme="http://yoursite.com/tags/medium/"/>
     
   </entry>
   
