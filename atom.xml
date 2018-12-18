@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-12-06T09:17:16.382Z</updated>
+  <updated>2018-12-18T15:00:00.458Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,13 +17,43 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>leetcode-220 存在重复元素 III</title>
+    <link href="http://yoursite.com/2018/12/18/leetcode-220/"/>
+    <id>http://yoursite.com/2018/12/18/leetcode-220/</id>
+    <published>2018-12-18T09:43:52.000Z</published>
+    <updated>2018-12-18T15:00:00.458Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目:"></a>题目:</h3><pre><code>检测一个包含整数的数组中是否存在nums[j],nums[i],使得nums[i]-nums[j]的绝对值不超过t，并且i和j的距离不超过k。例子：Input：nums = [1,2,3,1], k=3, t=0Output: true</code></pre><p>这道题使用桶排序，虽然桶排序占据的空间较大，但速度更快。先把题目要求翻译成不等式会更方便写出代码：<br>    设数组中任意两个满足题目要求的整数为v1，v2，假设v1是已知的，v2是要寻找的满足条件的整数。<br>    |v1-v2|&lt;=t<br>    -t &lt;= v1-v2 &lt;= t<br>    -1 &lt;= v1/t - v2/t &lt;= 1<br>    v1/t-1 &lt;= v2/t &lt;= v1/t+1<br>    由此，我们就有了在桶中寻找符合条件的v2的范围。<br>代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def containsNearbyAlmostDuplicate(self, nums, k, t):</span><br><span class="line">        bucket = &#123;&#125;</span><br><span class="line">        for i,v in enumerate(nums):</span><br><span class="line">            bucketindex, offset = (v//t, 1) if t else (v, 0)</span><br><span class="line">            for idex in range(bucketindex - offset, bucketindex + offset + 1):</span><br><span class="line">                if idex in bucket and abs(bucket[idex]-nums[i]) &lt;= t: #由于//取整后，范围并不是推导出来的严格的范围，所以在范围内之后还要确定是否满足差为t</span><br><span class="line">                    return True</span><br><span class="line">            bucket[bucketindex] = nums[i]</span><br><span class="line">            if len(bucket) &gt; k:</span><br><span class="line">                del bucket[nums[i-k]//t if t else nums[i-k]] #相当于以k为周期向数组尾部移动，因此需要每次删掉周期内第一个元素</span><br><span class="line">        return False</span><br></pre></td></tr></table></figure></p><p>这个方法十分巧妙，由于t&gt;=0，所以bucket内并不会有重复的元素，因为只要重复元素出现的间隔在k以内，都会在第二个for循环内部被返回true。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目:&quot;&gt;&lt;/a&gt;题目:&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;检测一个包含整数的数组中是否存在nums[j],nums[i],
+使得nums[i]-nums[j]的绝对值不超过t，并
+      
+    
+    </summary>
+    
+      <category term="leetcode" scheme="http://yoursite.com/categories/leetcode/"/>
+    
+    
+      <category term="leetcode" scheme="http://yoursite.com/tags/leetcode/"/>
+    
+      <category term="middle" scheme="http://yoursite.com/tags/middle/"/>
+    
+      <category term="桶排序" scheme="http://yoursite.com/tags/%E6%A1%B6%E6%8E%92%E5%BA%8F/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Python多线程编程</title>
     <link href="http://yoursite.com/2018/12/06/python-multiplexing/"/>
     <id>http://yoursite.com/2018/12/06/python-multiplexing/</id>
     <published>2018-12-06T02:54:59.000Z</published>
-    <updated>2018-12-06T09:17:16.382Z</updated>
+    <updated>2018-12-06T13:31:09.896Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="python的threading模块"><a href="#python的threading模块" class="headerlink" title="python的threading模块"></a>python的threading模块</h2><h3 id="一、线程"><a href="#一、线程" class="headerlink" title="一、线程"></a>一、线程</h3><p>线程是操作系统能够进行运算调度的最小单位。线程被包含在进程中，是进程中实际处理单位。<br>一条线程是指进程中一个单一顺序的控制流，一个进程中可以并发多个线程，每条线程并行执行不同的任务。</p><h3 id="二、进程"><a href="#二、进程" class="headerlink" title="二、进程"></a>二、进程</h3><p>进程（Process）是计算机中的程序关于某数据集合上的一次运行活动，是系统进行资源分配和调度的基本单位，是操作系统结构的基础。在早期面向进程设计的计算机结构中，进程是程序的基本执行实体；在当代面向线程设计的计算机结构中，进程是线程的容器。程序是指令、数据及其组织形式的描述，进程是程序的实体。</p><h3 id="三、区别"><a href="#三、区别" class="headerlink" title="三、区别"></a>三、区别</h3><p>进程是一块包含了某些资源的内存区域。操作系统利用进程把它的工作划分为一些功能单元。<br>进程中所包含的一个或多个执行单元成为线程。进程还拥有一个私有的虚拟地址空间，该进程空间仅能被它所包含的线程访问。<br>线程只能归属于一个进程并且它只能访问该进程所拥有的资源，一个进程下的所有线程共享该进程的资源。当操作系统创建一个进程后，该进程自动申请一个名为主线程或首要线程的线程。<br>处理计算密集型任务或函数用<strong>进程</strong><br>处理IO密集型任务或函数用<strong>线程</strong>  </p><h3 id="四、GIL"><a href="#四、GIL" class="headerlink" title="四、GIL"></a>四、GIL</h3><p>首先，GIL并不是Python的特性，它是在实现Python解析器（CPython）时所引入的一个概念。<br>同一段代码可以在CPython，PyPy，Psyco等不同的Python执行环境中运行，其中PyPy就没有GIL。然而因为CPython是大部分环境下默认的Python执行环境，所以CPython的GIL缺陷也就约等在了Python身上。<br>GIL特性：<br>    python中的一个线程对应于c语言中的一个线程（CPython）<br>    GIL使得同一时刻只有一个线程在CPU上执行字节代码，无法将多个线程映射到多个CPU上去执行。<br>    也就是说 <strong>在同一时刻，只有一个线程进入CPython解释器</strong><br>解决GIL限制的办法：  </p><pre><code>1. 多进程编程：既然多线程不能同时进入CPython解释器，我们可以通过把多个线程放入不同进程中，让多进程进入CPython解释器，分配给各个CPU，以利用多核实现并行。  2. 协程：后面会讲到</code></pre>]]></content>
+    <content type="html"><![CDATA[<h2 id="python的threading模块"><a href="#python的threading模块" class="headerlink" title="python的threading模块"></a>python的threading模块</h2><h3 id="一、线程"><a href="#一、线程" class="headerlink" title="一、线程"></a>一、线程</h3><p>线程是操作系统能够进行运算调度的最小单位。线程被包含在进程中，是进程中实际处理单位。<br>一条线程是指进程中一个单一顺序的控制流，一个进程中可以并发多个线程，每条线程并行执行不同的任务。</p><h3 id="二、进程"><a href="#二、进程" class="headerlink" title="二、进程"></a>二、进程</h3><p>进程（Process）是计算机中的程序关于某数据集合上的一次运行活动，是系统进行资源分配和调度的基本单位，是操作系统结构的基础。在早期面向进程设计的计算机结构中，进程是程序的基本执行实体；在当代面向线程设计的计算机结构中，进程是线程的容器。程序是指令、数据及其组织形式的描述，进程是程序的实体。</p><h3 id="三、区别"><a href="#三、区别" class="headerlink" title="三、区别"></a>三、区别</h3><p>进程是一块包含了某些资源的内存区域。操作系统利用进程把它的工作划分为一些功能单元。<br>进程中所包含的一个或多个执行单元成为线程。进程还拥有一个私有的虚拟地址空间，该进程空间仅能被它所包含的线程访问。<br>线程只能归属于一个进程并且它只能访问该进程所拥有的资源，一个进程下的所有线程共享该进程的资源。当操作系统创建一个进程后，该进程自动申请一个名为主线程或首要线程的线程。<br>处理计算密集型任务或函数用<strong>进程</strong><br>处理IO密集型任务或函数用<strong>线程</strong>  </p><h3 id="四、GIL"><a href="#四、GIL" class="headerlink" title="四、GIL"></a>四、GIL</h3><p>首先，GIL并不是Python的特性，它是在实现Python解析器（CPython）时所引入的一个概念。<br>同一段代码可以在CPython，PyPy，Psyco等不同的Python执行环境中运行，其中PyPy就没有GIL。然而因为CPython是大部分环境下默认的Python执行环境，所以CPython的GIL缺陷也就约等在了Python身上。<br>GIL特性:<br>   python中的一个线程对应于c语言中的一个线程（CPython）<br>   GIL使得同一时刻只有一个线程在CPU上执行字节代码，无法将多个线程映射到多个CPU上去执行。<br>   GIL会很据执行的字节码行数以及时间片释放GIL，GIL在遇到io操作时会主动释放</p><p>   也就是说 <strong>在同一时刻，只有一个线程进入CPython解释器</strong><br>解决GIL限制的办法：  </p><pre><code>1. 多进程编程：既然多线程不能同时进入CPython解释器，我们可以通过把多个线程放入不同进程中，让多进程进入CPython解释器，分配给各个CPU，以利用多核实现并行。  2. 协程：后面会讲到</code></pre>]]></content>
     
     <summary type="html">
     
@@ -92,9 +122,9 @@
     
       <category term="leetcode" scheme="http://yoursite.com/tags/leetcode/"/>
     
-      <category term="字符串" scheme="http://yoursite.com/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
-    
       <category term="easy" scheme="http://yoursite.com/tags/easy/"/>
+    
+      <category term="字符串" scheme="http://yoursite.com/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
     
   </entry>
   
@@ -126,9 +156,9 @@ Y    I   R
     
       <category term="leetcode" scheme="http://yoursite.com/tags/leetcode/"/>
     
-      <category term="medium" scheme="http://yoursite.com/tags/medium/"/>
-    
       <category term="字符串" scheme="http://yoursite.com/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+    
+      <category term="medium" scheme="http://yoursite.com/tags/medium/"/>
     
   </entry>
   
