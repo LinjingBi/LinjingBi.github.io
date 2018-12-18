@@ -353,16 +353,19 @@
 
       
         
-          
-            <h3 id="题目"><a href="#题目" class="headerlink" title="题目:"></a>题目:</h3><pre><code>检测一个包含整数的数组中是否存在nums[j],nums[i],
+          <h3 id="题目"><a href="#题目" class="headerlink" title="题目:"></a>题目:</h3><pre><code>检测一个包含整数的数组中是否存在nums[j],nums[i],
 使得nums[i]-nums[j]的绝对值不超过t，并且i和j的距离不超过k。
 例子：
 Input：nums = [1,2,3,1], k=3, t=0
 Output: true
-</code></pre><p>这道题使用桶排序，虽然桶排序占据的空间较大，但速度更快。先把题目要求翻译成不等式会更方便写出代码：<br>    设数组中任意两个满足题目要求的整数为v1，v2，假设v1是已知的，v2是要寻找的满足条件的整数。<br>    |v1-v2|&lt;=t<br>    -t &lt;= v1-v2 &lt;= t<br>    -1 &lt;= v1/t - v2/t &lt;= 1<br>    v1/t-1 &lt;= v2/t &lt;= v1/t+1<br>    由此，我们就有了在桶中寻找符合条件的v2的范围。<br>代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def containsNearbyAlmostDuplicate(self, nums, k, t):</span><br><span class="line">        bucket = &#123;&#125;</span><br><span class="line">        for i,v in enumerate(nums):</span><br><span class="line">            bucketindex, offset = (v//t, 1) if t else (v, 0)</span><br><span class="line">            for idex in range(bucketindex - offset, bucketindex + offset + 1):</span><br><span class="line">                if idex in bucket and abs(bucket[idex]-nums[i]) &lt;= t: #由于//取整后，范围并不是推导出来的严格的范围，所以在范围内之后还要确定是否满足差为t</span><br><span class="line">                    return True</span><br><span class="line">            bucket[bucketindex] = nums[i]</span><br><span class="line">            if len(bucket) &gt; k:</span><br><span class="line">                del bucket[nums[i-k]//t if t else nums[i-k]] #相当于以k为周期向数组尾部移动，因此需要每次删掉周期内第一个元素</span><br><span class="line">        return False</span><br></pre></td></tr></table></figure></p>
-<p>这个方法十分巧妙，由于t&gt;=0，所以bucket内并不会有重复的元素，因为只要重复元素出现的间隔在k以内，都会在第二个for循环内部被返回true。</p>
-
-          
+</code></pre>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/12/18/leetcode-220/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
