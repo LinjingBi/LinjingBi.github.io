@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="leetcode,easy,Kadane's Algorithm,">
 
 
 
@@ -81,13 +81,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="LINJING BI">
-<meta property="og:url" content="http://yoursite.com/tags/easy/index.html">
+<meta name="description" content="题目：找到一个整数数组的最大累加和子数组 例子： Input: [-2,1,-3,4,-1,2,1,-5,4] Output: 6 Explanation: [4,-1,2,1]有最大累加和=6。 这道题用到了Kadane‘s 算法。算法指出，在数组A中，如果我们知道一个以位置i为截至元素的最大累加和子数组Bi，那么在i+1位置上的最大累积和子数组Bi+1要么是一个前缀为Bi的子数组，要么不是。B">
+<meta name="keywords" content="leetcode,easy,Kadane&#39;s Algorithm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="leetcode-53 最大子数组">
+<meta property="og:url" content="http://yoursite.com/2018/12/19/leetcode-53/index.html">
 <meta property="og:site_name" content="LINJING BI">
+<meta property="og:description" content="题目：找到一个整数数组的最大累加和子数组 例子： Input: [-2,1,-3,4,-1,2,1,-5,4] Output: 6 Explanation: [4,-1,2,1]有最大累加和=6。 这道题用到了Kadane‘s 算法。算法指出，在数组A中，如果我们知道一个以位置i为截至元素的最大累加和子数组Bi，那么在i+1位置上的最大累积和子数组Bi+1要么是一个前缀为Bi的子数组，要么不是。B">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-12-19T12:21:57.645Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LINJING BI">
+<meta name="twitter:title" content="leetcode-53 最大子数组">
+<meta name="twitter:description" content="题目：找到一个整数数组的最大累加和子数组 例子： Input: [-2,1,-3,4,-1,2,1,-5,4] Output: 6 Explanation: [4,-1,2,1]有最大累加和=6。 这道题用到了Kadane‘s 算法。算法指出，在数组A中，如果我们知道一个以位置i为截至元素的最大累加和子数组Bi，那么在i+1位置上的最大累积和子数组Bi+1要么是一个前缀为Bi的子数组，要么不是。B">
 
 
 
@@ -117,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/easy/">
+  <link rel="canonical" href="http://yoursite.com/2018/12/19/leetcode-53/">
 
 
 
 
 
-  <title>标签: easy | LINJING BI</title>
+  <title>leetcode-53 最大子数组 | LINJING BI</title>
   
 
 
@@ -142,7 +147,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -246,78 +251,207 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>easy<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/19/leetcode-53/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LINJING BI">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/12/19/leetcode-53/" itemprop="url">
-              
-                <span itemprop="name">leetcode-53 最大子数组</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">leetcode-53 最大子数组</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-19T11:01:26+08:00" content="2018-12-19">
-          12-19
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-19T11:01:26+08:00">
+                2018-12-19
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
+      
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/11/20/leetcode-58/" itemprop="url">
-              
-                <span itemprop="name">leetcode 58 最后一个单词的长度</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-11-20T22:41:41+08:00" content="2018-11-20">
-          11-20
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
+        <h3 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h3><pre><code>找到一个整数数组的最大累加和子数组
+例子：
+Input: [-2,1,-3,4,-1,2,1,-5,4]
+Output: 6
+Explanation: [4,-1,2,1]有最大累加和=6。
+</code></pre><p>这道题用到了Kadane‘s 算法。算法指出，在数组A中，如果我们知道一个以位置i为截至元素的最大累加和子数组Bi，那么在i+1位置上的最大累积和子数组Bi+1<br>要么是一个前缀为Bi的子数组，要么不是。Bi+1 = max（Bi+A[i+1],A[i+1]）。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#python3</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">maxSubArray</span><span class="params">(nums)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> len(nums) == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    cursum = maxsum = nums[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">for</span> num <span class="keyword">in</span> nums[<span class="number">1</span>:]:</span><br><span class="line">        cursum = max(num, num+cursum) <span class="comment">#这行代码是对kadane’s的诠释，我们企图找到一个更长的子数组或者重新开始一个子数组</span></span><br><span class="line">        maxsum = max(maxsum, cursum) <span class="comment">#maxsum用来存储最大子数组的历史纪录，并时刻刷新记录</span></span><br></pre></td></tr></table></figure></p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Bi 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Bi 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/easy/" rel="tag"># easy</a>
+          
+            <a href="/tags/Kadane-s-Algorithm/" rel="tag"># Kadane's Algorithm</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/18/leetcode-220/" rel="next" title="leetcode-220 存在重复元素 III">
+                <i class="fa fa-chevron-left"></i> leetcode-220 存在重复元素 III
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -325,6 +459,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -345,8 +483,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -443,6 +590,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目："><span class="nav-number">1.</span> <span class="nav-text">题目：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -576,6 +739,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
