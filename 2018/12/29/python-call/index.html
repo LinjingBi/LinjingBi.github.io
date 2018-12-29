@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="leetcode,链表,medium,">
+  <meta name="keywords" content="python,类装饰器,">
 
 
 
@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="题目：反转从位置m到n的链表。请使用一趟扫描完成反转。(1&amp;lt;=m&amp;lt;=n&amp;lt;=lenofthelist) 例子:     input：1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5-&amp;gt;NULL, m=2, n=4     output: 1-&amp;gt;4-&amp;gt;3-&amp;gt;2-&amp;gt;5-&amp;gt;NULL     首先记录m-1的节点(front)，然后依次倒置[m,n]之">
-<meta name="keywords" content="leetcode,链表,medium">
+<meta name="description" content="看用python实现一个简单的web框架时，看到了call的用法，用来处理路由问题，貌似Flask里面也是用这个来实现路由Routing。这玩意儿挺绕的，想清楚就赶快写下来，以后备用。其实跟函数装饰器很相似，也完全可以当成函数装饰器来用。先讲一下call比较简单的一种用法，就是让类的实例变成可调用对象。">
+<meta name="keywords" content="python,类装饰器">
 <meta property="og:type" content="article">
-<meta property="og:title" content="leetcode 92 反转m到n的链表">
-<meta property="og:url" content="http://yoursite.com/2018/11/14/leetcode-92/index.html">
+<meta property="og:title" content="python中__call__的用法">
+<meta property="og:url" content="http://yoursite.com/2018/12/29/python-call/index.html">
 <meta property="og:site_name" content="LINJING BI">
-<meta property="og:description" content="题目：反转从位置m到n的链表。请使用一趟扫描完成反转。(1&amp;lt;=m&amp;lt;=n&amp;lt;=lenofthelist) 例子:     input：1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5-&amp;gt;NULL, m=2, n=4     output: 1-&amp;gt;4-&amp;gt;3-&amp;gt;2-&amp;gt;5-&amp;gt;NULL     首先记录m-1的节点(front)，然后依次倒置[m,n]之">
+<meta property="og:description" content="看用python实现一个简单的web框架时，看到了call的用法，用来处理路由问题，貌似Flask里面也是用这个来实现路由Routing。这玩意儿挺绕的，想清楚就赶快写下来，以后备用。其实跟函数装饰器很相似，也完全可以当成函数装饰器来用。先讲一下call比较简单的一种用法，就是让类的实例变成可调用对象。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-16T05:00:58.834Z">
+<meta property="og:updated_time" content="2018-12-29T11:20:20.454Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="leetcode 92 反转m到n的链表">
-<meta name="twitter:description" content="题目：反转从位置m到n的链表。请使用一趟扫描完成反转。(1&amp;lt;=m&amp;lt;=n&amp;lt;=lenofthelist) 例子:     input：1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5-&amp;gt;NULL, m=2, n=4     output: 1-&amp;gt;4-&amp;gt;3-&amp;gt;2-&amp;gt;5-&amp;gt;NULL     首先记录m-1的节点(front)，然后依次倒置[m,n]之">
+<meta name="twitter:title" content="python中__call__的用法">
+<meta name="twitter:description" content="看用python实现一个简单的web框架时，看到了call的用法，用来处理路由问题，貌似Flask里面也是用这个来实现路由Routing。这玩意儿挺绕的，想清楚就赶快写下来，以后备用。其实跟函数装饰器很相似，也完全可以当成函数装饰器来用。先讲一下call比较简单的一种用法，就是让类的实例变成可调用对象。">
 
 
 
@@ -122,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/11/14/leetcode-92/">
+  <link rel="canonical" href="http://yoursite.com/2018/12/29/python-call/">
 
 
 
 
 
-  <title>leetcode 92 反转m到n的链表 | LINJING BI</title>
+  <title>python中__call__的用法 | LINJING BI</title>
   
 
 
@@ -265,7 +265,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/14/leetcode-92/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/29/python-call/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bi">
@@ -282,7 +282,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">leetcode 92 反转m到n的链表</h1>
+          <h1 class="post-title" itemprop="name headline">python中__call__的用法</h1>
         
 
         <div class="post-meta">
@@ -294,8 +294,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-14T23:47:01+08:00">
-                2018-11-14
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-29T18:14:01+08:00">
+                2018-12-29
               </time>
             
 
@@ -317,8 +317,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/leetcode/" itemprop="url" rel="index">
-                    <span itemprop="name">leetcode</span>
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
                   </a>
                 </span>
 
@@ -354,11 +354,8 @@
       
 
       
-        <h3 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h3><pre><code>反转从位置m到n的链表。请使用一趟扫描完成反转。(1&lt;=m&lt;=n&lt;=lenofthelist)
-例子:
-    input：1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL, m=2, n=4
-    output: 1-&gt;4-&gt;3-&gt;2-&gt;5-&gt;NULL    
-</code></pre><p>首先记录m-1的节点(front)，然后依次倒置[m,n]之间的节点，期间还要注意m节点的收藏(tail)，用来设置tail.next=back，然后记录n+1(back)节点，最后完成n+1，m-1连接。由于倒置是通过不停的选择next节点来完成，为了防止陷入死循环，本次节点(cur)与本次节点next节点(temp)的关系倒置要放到下一次循环中处理，这就需要我们引入pre来记录本次节点。<br>简而言之，介于[m,n]间的单次循环要完成两项任务：1. 设置temp 2. 完成cur.next = pre。<br>另外，几个需要注意的小细节，这里的m,n指的是位置，不是类似于数组的秩，是从1开始的。所以在循环倒置时，i也应先加1，表示此次是对第一个位置操作。<br><a href="https://leetcode.com/problems/reverse-linked-list-ii/discuss/184849/Python-Solution-20ms-beats-100?from=singlemessage&amp;isappinstalled=0" target="_blank" rel="noopener">代码来源</a><br><a id="more"></a><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#python3</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">reverseBetween</span><span class="params">(self, head, m, n)</span>:</span></span><br><span class="line">        cur = head</span><br><span class="line">        i = <span class="number">0</span></span><br><span class="line">        back = tail = front = pre = <span class="keyword">None</span></span><br><span class="line">        <span class="keyword">while</span> cur <span class="keyword">and</span> i &lt; n+<span class="number">1</span>:</span><br><span class="line">            i += <span class="number">1</span>             </span><br><span class="line">            <span class="keyword">if</span> m &lt;= i &lt;= n:</span><br><span class="line">                tmp = cur.next <span class="comment">#task 1</span></span><br><span class="line">                <span class="keyword">if</span> pre <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">                    tail = cur <span class="comment">#record m</span></span><br><span class="line">                cur.next = pre <span class="comment">#task 2</span></span><br><span class="line">                pre = cur</span><br><span class="line">                cur = tmp</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">if</span> i == m<span class="number">-1</span>:</span><br><span class="line">                    front = cur <span class="comment">#record m-1</span></span><br><span class="line">                <span class="keyword">elif</span> i == n+<span class="number">1</span>:</span><br><span class="line">                    back = cur</span><br><span class="line">                cur = cur.next <span class="comment"># !!move to the next!!</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> front:</span><br><span class="line">            front.next = pre</span><br><span class="line">            res = head</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            res = pre</span><br><span class="line">        tail.next = back</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure></p>
+        <p>看用python实现一个简单的web框架时，看到了<strong>call</strong>的用法，用来处理路由问题，貌似Flask里面也是用这个来实现路由Routing。<br>这玩意儿挺绕的，想清楚就赶快写下来，以后备用。其实跟函数装饰器很相似，也完全可以当成函数装饰器来用。<br>先讲一下<strong>call</strong>比较简单的一种用法，就是让类的实例变成可调用对象。<br><a id="more"></a><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Request</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self._a = <span class="number">2</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__call__</span><span class="params">(self, x, y)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> x+y</span><br><span class="line">req = Request()</span><br><span class="line">req(<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#output</span></span><br><span class="line"><span class="comment">#&gt;&gt;&gt;3</span></span><br></pre></td></tr></table></figure></p>
+<p>接下来讲用<strong>call</strong>实现装饰器：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在用它完成web框架路由设置的时候，我们是把每个路径对应的响应函数存进route，这样每次来请求，我们就知道用那个函数生成响应</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Route</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, pattern)</span>:</span></span><br><span class="line">        self._pattern = pattern</span><br><span class="line">        self._check_list = []</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__call__</span><span class="params">(self, callback)</span>:</span></span><br><span class="line">        self._check_list.append((self._pattern, callback))</span><br><span class="line">        </span><br><span class="line"><span class="meta">@Route(r'/hello/(.*)/$') # 0. hello=Route(r'...)：首先先执行Route(r'/hello/(.*)/$'),也就是生成了一个self._pattern为括号内内容的实例也叫hello，</span></span><br><span class="line">                            <span class="comment"># 不是函数名称hello，是__call__,它的地址指向__call__</span></span><br><span class="line">                        <span class="comment"># 1. 然后是 @ , 功能是hello(hello)括号内才是函数名称hello，也就是说把函数名称hello带入了__call__内执行（等同于__call__(hello))</span></span><br><span class="line">                            <span class="comment"># ，所以会直接把pattern和callback（也就是hello）append进checklist。</span></span><br><span class="line">                        <span class="comment"># 这整个过程并不需要别的执行语句，一个@就自动执行完成了。所以当我们想调用hello(request,name)这个函数的时候，会报错，因为hello的地址指向了__call__,外部是访问不到的</span></span><br><span class="line">                        <span class="comment"># 这点是跟函数装饰器有不同，函数装饰器还是可以调用hello</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello</span><span class="params">(request,name)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> Response(<span class="string">'&lt;h1&gt;Hi,&#123;&#125;&lt;/h1&gt;'</span>.format(name))</span><br><span class="line">    </span><br><span class="line"><span class="meta">@Route(r'/seeyou/(.*)/$')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bye</span><span class="params">(request,name)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> Response(<span class="string">'&lt;h1&gt;Bye,&#123;&#125;&lt;/h1&gt;'</span>.format(name))       </span><br><span class="line"></span><br><span class="line"><span class="comment"># 既然前面说了__call__可以使实例变成可调用对象，那么我们可不可以先实列化，再拿实例当构造函数，装饰我们的响应函数实现同样功能呢，下面展示如何实现</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Route</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self._check_list = []</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__call__</span><span class="params">(self, pattern)</span>:</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">inside</span><span class="params">(callback)</span>:</span></span><br><span class="line">            self._check_list.append((pattern, callback))</span><br><span class="line">        <span class="keyword">return</span> inside</span><br><span class="line">re = Route() <span class="comment">#完成类的实例化，现在re是一个可调用对象__call__, re(pattern)==__call__(pattern)</span></span><br><span class="line"><span class="meta">@re(r'/seeyou/(.*)/$')  # 0. 记住re就是__call__，先执行re(r'/seeyou/(.*)/$')，返回inside</span></span><br><span class="line">                        <span class="comment"># 1. @起作用了，抓取了bye上来，执行bye=inside(bye),也就是__call__的inside函数，</span></span><br><span class="line">                        <span class="comment"># 2. 所以现在我们有了pattern，也有了callback可以正常append了</span></span><br><span class="line">                        </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bye</span><span class="params">(request,name)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> Response(<span class="string">'&lt;h1&gt;Bye,&#123;&#125;&lt;/h1&gt;'</span>.format(name))</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -405,11 +402,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+            <a href="/tags/python/" rel="tag"># python</a>
           
-            <a href="/tags/链表/" rel="tag"># 链表</a>
-          
-            <a href="/tags/medium/" rel="tag"># medium</a>
+            <a href="/tags/类装饰器/" rel="tag"># 类装饰器</a>
           
         </div>
       
@@ -422,8 +417,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/13/HEXO部署/" rel="next" title="HEXO部署到GitHub.io搭建个人博客">
-                <i class="fa fa-chevron-left"></i> HEXO部署到GitHub.io搭建个人博客
+              <a href="/2018/12/28/DIY-ThreadingPool/" rel="next" title="python线程池解析及自制线程池(基础款)">
+                <i class="fa fa-chevron-left"></i> python线程池解析及自制线程池(基础款)
               </a>
             
           </div>
@@ -431,10 +426,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/16/leetcode-25/" rel="prev" title="leetcode 25 k个一组反转链表">
-                leetcode 25 k个一组反转链表 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -486,17 +477,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -593,22 +575,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目："><span class="nav-number">1.</span> <span class="nav-text">题目：</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
