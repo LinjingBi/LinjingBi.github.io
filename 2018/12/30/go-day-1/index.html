@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="go,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="LINJING BI" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="一些感想。。。学习go的第一天，感觉python把我惯坏了，真实的编程世界是很残酷的。但是还是要努力学下去啊！加油鸭！！老老实实的记笔记，数据类型比python复杂多了，写法都记了半天，定义的时候记住数字优先然后类型。提醒一下，所有的语句都要放在函数内部，函数要放在package main里，并且package里要有main函数，下面开始正文吧">
+<meta name="keywords" content="go">
+<meta property="og:type" content="article">
+<meta property="og:title" content="go day 1">
+<meta property="og:url" content="http://yoursite.com/2018/12/30/go-day-1/index.html">
+<meta property="og:site_name" content="LINJING BI">
+<meta property="og:description" content="一些感想。。。学习go的第一天，感觉python把我惯坏了，真实的编程世界是很残酷的。但是还是要努力学下去啊！加油鸭！！老老实实的记笔记，数据类型比python复杂多了，写法都记了半天，定义的时候记住数字优先然后类型。提醒一下，所有的语句都要放在函数内部，函数要放在package main里，并且package里要有main函数，下面开始正文吧">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-12-30T12:23:22.570Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="go day 1">
+<meta name="twitter:description" content="一些感想。。。学习go的第一天，感觉python把我惯坏了，真实的编程世界是很残酷的。但是还是要努力学下去啊！加油鸭！！老老实实的记笔记，数据类型比python复杂多了，写法都记了半天，定义的时候记住数字优先然后类型。提醒一下，所有的语句都要放在函数内部，函数要放在package main里，并且package里要有main函数，下面开始正文吧">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/12/30/go-day-1/">
+
+
+
+
+
+  <title>go day 1 | LINJING BI</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">LINJING BI</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">biubiubiu...</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/30/go-day-1/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LINJING BI">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">go day 1</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-30T18:57:40+08:00">
+                2018-12-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/go/" itemprop="url" rel="index">
+                    <span itemprop="name">go</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="一些感想。。。"><a href="#一些感想。。。" class="headerlink" title="一些感想。。。"></a>一些感想。。。</h2><p>学习go的第一天，感觉python把我惯坏了，真实的编程世界是很残酷的。但是还是要努力学下去啊！加油鸭！！<br>老老实实的记笔记，数据类型比python复杂多了，写法都记了半天，定义的时候记住数字优先然后类型。<br>提醒一下，所有的语句都要放在函数内部，函数要放在package main里，并且package里要有main函数，下面开始正文吧<br><a id="more"></a> </p>
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><h3 id="声明和初始化："><a href="#声明和初始化：" class="headerlink" title="声明和初始化："></a>声明和初始化：</h3><p>原则：1. 数组长度 2. 存储数据类型（必须以一致）<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> array [<span class="number">5</span>]<span class="keyword">int</span> <span class="comment">//初始化全0</span></span><br><span class="line">array:= [<span class="number">5</span>]<span class="keyword">int</span>&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125; <span class="comment">//非零初始化</span></span><br><span class="line">array:=[...]<span class="keyword">int</span>&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125; <span class="comment">//可以不声明长度，go会自动计算长度</span></span><br><span class="line">array:=[<span class="number">5</span>]<span class="keyword">int</span>&#123;<span class="number">1</span>:<span class="number">3</span>,<span class="number">2</span>:<span class="number">4</span>&#125; <span class="comment">//只初始化个别位置，其他为0</span></span><br><span class="line">array[<span class="number">1</span>]=<span class="number">5</span> <span class="comment">//修改数组元素</span></span><br><span class="line">fmt.Printf(<span class="string">"%d\n"</span>,array[<span class="number">1</span>]) </span><br><span class="line"><span class="comment">//循环打印数组的值</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">for</span> i,v := rang array&#123;</span><br><span class="line">		fmt.Printf(<span class="string">"索引:%d,值:%d\n"</span>,i,v)</span><br><span class="line">	&#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>数组赋值：只有长度相同，每一个元素类型都相同的数组可以互相赋值。<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">array := [<span class="number">3</span>]<span class="keyword">int</span>&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;</span><br><span class="line">array1 = array</span><br></pre></td></tr></table></figure></p>
+<p>指针数组：指针数组的初始化可以用new(int),new(bool),new(string),分配各种类型的内存空间，int初始值为0，str空，bool false<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">i = <span class="built_in">new</span>(<span class="keyword">int</span>) <span class="comment">//返回的是为整型分配的地址，*i 指的是值为0，相当于i就变成指针</span></span><br><span class="line">*i= <span class="number">5</span> <span class="comment">//给指针指向的地址赋值</span></span><br><span class="line">p := [<span class="number">8</span>]*<span class="keyword">int</span>&#123;<span class="number">1</span>:<span class="built_in">new</span>(<span class="keyword">int</span>),<span class="number">2</span>:<span class="built_in">new</span>(<span class="keyword">int</span>)&#125; <span class="comment">//没设初值的为指针的零值nil</span></span><br><span class="line">*p[<span class="number">1</span>] = <span class="number">9</span>   <span class="comment">//只能给设了初值的赋值，因为只有他们分配了内存地址</span></span><br><span class="line">fmt.Println(*p[<span class="number">1</span>])</span><br></pre></td></tr></table></figure></p>
+<p>下面用指针完成数组复制：<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	array:= [<span class="number">3</span>]<span class="keyword">int</span>&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;</span><br><span class="line">	modify(&amp;array) <span class="comment">//将array的指针传入modify，函数外部&amp;表示值，*表示指针，内部相反</span></span><br><span class="line">	fmt.Println(array)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">modify</span><span class="params">(a *[3]<span class="keyword">int</span>)</span></span>&#123;</span><br><span class="line">	a[<span class="number">1</span>] = <span class="number">5</span></span><br><span class="line">	fmt.Println(*a)  <span class="comment">//*a指的是数组的值，因为a是当地址传入的</span></span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h2><p>切片的底层是数组，动态数组。有三个字段的数据结构：指向底层数组的指针，切片的长度，切片的容量。<br>切片的声明和初始化：  </p>
+<ol>
+<li><p>声明切片长度&gt;=容量的切片使用make(),不能设初值：  </p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">slice := <span class="built_in">make</span>([]<span class="keyword">int</span>,<span class="number">5</span>) <span class="comment">//如果只有一个参数。默认长度容量都是5</span></span><br><span class="line">slice := <span class="built_in">make</span>([]<span class="keyword">int</span>,<span class="number">5</span>,<span class="number">10</span>) <span class="comment">//长度5，容量10，但是能访问的只有5，剩下的自动扩容后才能访问</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>切片长度==容量：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//切片</span></span><br><span class="line">slice := []<span class="keyword">int</span>&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;  <span class="comment">//长度容量都是3，也设置了初值</span></span><br><span class="line">slice := []<span class="keyword">int</span>&#123;<span class="number">1</span>:<span class="number">2</span>,<span class="number">4</span>:<span class="number">5</span>&#125; <span class="comment">//长度容量都是5</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//切片和数组的区别</span></span><br><span class="line">array := [<span class="number">5</span>]<span class="keyword">int</span>&#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125; <span class="comment">//数组需要设置长度</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>nil切片和空切片：nil切片意味着指向底层数组的指针为nil，而空切片对应的指针是个地址。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> nilSlice = <span class="keyword">int</span>[] <span class="comment">//nil切片</span></span><br><span class="line">Slice := []<span class="keyword">int</span>&#123;&#125; <span class="comment">//空切片</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>切片切片：长度为k的切片切片赋值给新切片slice[i:j], 新切片和原始切片都指向同一个底层数组，一个变大家都变。<br>新切片的长度:j-i，容量:k-i。slice[i:j:k]这种设置间隔的也一样计算。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">slice1 := []<span class="keyword">int</span>&#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;</span><br><span class="line">slice2 := slice[<span class="number">1</span>:<span class="number">2</span>] <span class="comment">//只包含头不包含尾</span></span><br><span class="line">slice3 := slice[:]</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="使用切片"><a href="#使用切片" class="headerlink" title="使用切片"></a>使用切片</h3><p>1.append<br>切片也可以通过索引获取，修改值。还可以通过append追加值。但是由于slice，newslice都指向同一个底层数组，而append操作是对底层数组的操作，所以旧slice也会受影响<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">slice := []<span class="keyword">int</span>&#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;</span><br><span class="line">newslice := slice[<span class="number">2</span>:<span class="number">4</span>]</span><br><span class="line">newslice = <span class="built_in">append</span>(newslice,<span class="number">10</span>) <span class="comment">//append并不会修改newslice的值，而是重新复制一个，我们把它再次赋值给newslice，这才改变newslice，但所有的slice都指向同一个底层数组</span></span><br><span class="line">fmt.Println(slice) <span class="comment">//[0,1,2,3,10] 由于newslice指向的底层数组还有空间，所以底层数组的第四位就被重新赋值了</span></span><br><span class="line">fmt.Println(newslice)<span class="comment">//[2,3,10]</span></span><br></pre></td></tr></table></figure></p>
+<p>如果底层数组没有了多余空间，执行append的时候，会先把底层数组赋值给具有足够容量的新数组，然后对新数组执行append操作，这样就完全不会影响以前的引用了。<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">slice := []<span class="keyword">int</span>&#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;</span><br><span class="line">newslice := slice[<span class="number">2</span>:]</span><br><span class="line">newslice = <span class="built_in">append</span>(newslice,<span class="number">10</span>) </span><br><span class="line">fmt.Println(slice) <span class="comment">//[0,1,2,3,4]</span></span><br><span class="line">fmt.Println(newslice) <span class="comment">//[2,3,4,10]</span></span><br></pre></td></tr></table></figure></p>
+<p>append也可以追加好几个值。append会智能的增长底层数组的容量，目前的算法是，容量小于1000时，成倍增长，大于1000，1.25倍增长<br>此外还可以通过…把一个切片追加到另一个切片里：<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">new</span> = <span class="built_in">append</span>(slice, newslice...)</span><br></pre></td></tr></table></figure></p>
+<ol start="2">
+<li><p>迭代 for  </p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">iter</span><span class="params">()</span></span>&#123;</span><br><span class="line">	slice := []<span class="keyword">int</span>&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;</span><br><span class="line">	<span class="keyword">for</span> i,v := rang slice &#123;</span><br><span class="line">		ftm.Println(v)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>最后由于切片是一个只有三个字段的数据结构在函数间传递，所以是很高效的！不过，在函数间的传递是复制后传递的，因为两个变量地址不同，但如果改一个，大家都要变，所以还是共享一个底层数组。</p>
+</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Bi 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Bi 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/go/" rel="tag"># go</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/29/python-call/" rel="next" title="python中__call__的用法">
+                <i class="fa fa-chevron-left"></i> python中__call__的用法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Bi</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/LinjingBi" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:1260935104@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://106.14.174.96:8000/rango/" title="PIPIJI's COOP" target="_blank">PIPIJI's COOP</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一些感想。。。"><span class="nav-number">1.</span> <span class="nav-text">一些感想。。。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组"><span class="nav-number">2.</span> <span class="nav-text">数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#声明和初始化："><span class="nav-number">2.1.</span> <span class="nav-text">声明和初始化：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#切片"><span class="nav-number">3.</span> <span class="nav-text">切片</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用切片"><span class="nav-number">3.1.</span> <span class="nav-text">使用切片</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bi</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
