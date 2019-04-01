@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-04-01T03:10:52.612Z</updated>
+  <updated>2019-04-01T03:13:51.497Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>pycharm_to_linux</title>
+    <title>部署pycharm上的本地项目到服务器</title>
     <link href="http://yoursite.com/2019/04/01/pycharm-to-linux/"/>
     <id>http://yoursite.com/2019/04/01/pycharm-to-linux/</id>
     <published>2019-04-01T02:39:44.000Z</published>
-    <updated>2019-04-01T03:10:52.612Z</updated>
+    <updated>2019-04-01T03:13:51.497Z</updated>
     
     <content type="html"><![CDATA[<h3 id="如何将用pycharm调试的本地项目部署到服务器-ubuntu"><a href="#如何将用pycharm调试的本地项目部署到服务器-ubuntu" class="headerlink" title="如何将用pycharm调试的本地项目部署到服务器(ubuntu)"></a>如何将用pycharm调试的本地项目部署到服务器(ubuntu)</h3><ul><li>pycharm创建项目时一同创建virtualenv（默认会自动创建）</li><li><p>项目调试完毕后，生成requirements.txt依赖管理文件<br>打开pycharm下方的工具栏里的terminal，在项目根目录下生成依赖文件</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip freeze &gt;requirements.txt</span><br></pre></td></tr></table></figure></li><li><p>除了虚拟环境模块(默认叫venv)，上传其他项目模块至服务器</p></li><li><p>服务器上安装virtualenv(服务器上用python3)</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">pip3 install virtualenv   // 安装虚拟环境</span><br><span class="line">virtualenv venv   // 创建虚拟环境venv，最好在项目根目录下执行</span><br><span class="line">cd venv   // 进入虚拟环境目录</span><br><span class="line">source ./bin/activate  // 进入虚拟环境</span><br><span class="line">pip3 install -r &lt;where_you_are&gt;/&lt;项目根目录&gt;/requirements.txt    // 在虚拟环境下安装项目依赖</span><br><span class="line">pip3 list  // 查看安装的依赖</span><br></pre></td></tr></table></figure></li><li><p>部署完毕，项目所有的依赖在虚拟环境下安装完毕。</p></li></ul>]]></content>
     
@@ -44,11 +44,11 @@
   </entry>
   
   <entry>
-    <title>stdout_redirection</title>
+    <title>python输出重定向</title>
     <link href="http://yoursite.com/2019/04/01/stdout-redirection/"/>
     <id>http://yoursite.com/2019/04/01/stdout-redirection/</id>
     <published>2019-04-01T02:31:13.000Z</published>
-    <updated>2019-04-01T02:41:27.370Z</updated>
+    <updated>2019-04-01T03:14:11.741Z</updated>
     
     <content type="html"><![CDATA[<h3 id="sys-stdout输出重定向"><a href="#sys-stdout输出重定向" class="headerlink" title="sys.stdout输出重定向"></a>sys.stdout输出重定向</h3><p>收集sys.stdout写入输出缓冲区的内容写入txt文件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line"></span><br><span class="line">BASE_DIR = os.path.dirname(__file__)</span><br><span class="line">class _ResultCollector:</span><br><span class="line">    &quot;&quot;&quot;重定向sys.stdout，将输出缓冲区的内容写入指定路径下的指定文档，用于后期测试&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">    def __init__(self, filename=&quot;Default.txt&quot;):</span><br><span class="line">        try:</span><br><span class="line">            os.mkdir(&apos;./results&apos;)</span><br><span class="line">        except FileExistsError:</span><br><span class="line">            pass</span><br><span class="line">        # 转移sys.stdout，不妨碍sys.stdout的正常使用</span><br><span class="line">        self.terminal = sys.stdout</span><br><span class="line">        # 创建存放输出的文件</span><br><span class="line">        res_dir = os.path.join(BASE_DIR, &apos;results/&#123;&#125;&apos;.format(filename))</span><br><span class="line">        self.result = open(res_dir, &apos;a&apos;)</span><br><span class="line"></span><br><span class="line">    def write(self, message):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        进行重定向文件的写，以及正常的sys.stdout的写</span><br><span class="line">        :param message: 输出缓冲区的内容 type str</span><br><span class="line">        :return:</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        self.terminal.write(message)</span><br><span class="line">        self.result.write(message)</span><br><span class="line"></span><br><span class="line">    # def flush(self):</span><br><span class="line">    #     self.terminal.flush()</span><br><span class="line">    #</span><br><span class="line">    # def getvalue(self):</span><br><span class="line">    #     self.terminal.getvalue()</span><br></pre></td></tr></table></figure></p>]]></content>
     
